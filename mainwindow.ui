@@ -160,6 +160,12 @@
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <item>
            <widget class="Dialog" name="navball">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>550</width>
@@ -167,6 +173,22 @@
              </size>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -185,7 +207,7 @@
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>100</width>
+                  <width>16777215</width>
                   <height>40</height>
                  </size>
                 </property>
