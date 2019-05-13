@@ -10,13 +10,14 @@ parser::parser()
   tmp->speed=0;
 }
 
-void parser::parseString(QString line)
+void parser::parseString(QByteArray line)
 {
-    std::string src = line.toStdString();
+    qDebug()<<"parse string";
+    QString line_string(line);
+    std::string src = line_string.toStdString();
     std::istringstream iss(src);
     std::vector<std::string> results(std::istream_iterator<std::string>{iss},std::istream_iterator<std::string>());
     if(results.size()==8){
-        //qDebug()<<QString(results.at(0));
         tmp->yaw=atof((results.at(0).c_str()));
         tmp->pitch=atof((results.at(1).c_str()));
         tmp->roll=atof((results.at(2).c_str()));
@@ -26,6 +27,7 @@ void parser::parseString(QString line)
         tmp->lat=atof((results.at(6).c_str()));
         tmp->lon=atof((results.at(7).c_str()));
 
+        qDebug()<<"jest 8";
         dataChanged(tmp);
     }
 }

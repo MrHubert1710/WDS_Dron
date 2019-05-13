@@ -108,7 +108,9 @@ void Dialog::initializeGL()
     m_view.setToIdentity();
     m_view.translate(0, 0, -3);
 
-    glClearColor(1, 1, 1, 1);
+    glClearColor(1, 1, 1, 0);
+    //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    //glColor3f(1,1,1);
 
     m_program.addShaderFromSourceCode(QOpenGLShader::Vertex, vertexShaderSourceCore);
     m_program.addShaderFromSourceCode(QOpenGLShader::Fragment, fragmentShaderSourceCore);

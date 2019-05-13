@@ -26,7 +26,7 @@ public:
 signals:
     void dataChanged(drone_data *present);
 public slots:
-    void parseString(QString line);
+    void parseString(QByteArray line);
 private:
     drone_data *tmp;
 };
