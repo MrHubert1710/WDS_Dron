@@ -12,9 +12,10 @@ parser::parser()
 
 void parser::parseString(QByteArray line)
 {
-    qDebug()<<"parse string";
+    //qDebug()<<"parse string";
     QString line_string(line);
-    std::string src = line_string.toStdString();
+    line_string.remove(QChar('\x00'));
+    std::string src = line_string.simplified().toStdString();
     std::istringstream iss(src);
     std::vector<std::string> results(std::istream_iterator<std::string>{iss},std::istream_iterator<std::string>());
     if(results.size()==8){
@@ -27,7 +28,7 @@ void parser::parseString(QByteArray line)
         tmp->lat=atof((results.at(6).c_str()));
         tmp->lon=atof((results.at(7).c_str()));
 
-        qDebug()<<"jest 8";
+        //qDebug()<<"jest 8";
         dataChanged(tmp);
     }
 }

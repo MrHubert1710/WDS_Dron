@@ -11,54 +11,72 @@
 #include <string>
 #include <cstdlib>
 #include <QElapsedTimer>
-#include "parser.h"
-#include <QtSerialPort/QSerialPort>
-#include <QtSerialPort/QSerialPortInfo>
+#include "comms.h"
+/*! \mainpage Wizualizacja Danych Sensorycznych Drona
+ *  Dokumentacja aplikacji wizualizującej odczyty z drona
+*/
 namespace Ui {
 class MainWindow;
 }
-
+//! Klasa definiująca główne okno
+/*!
+ * \brief Klasa zawiera elementy potrzebne do wyświetlania wszystkich elementów głównego okna
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
+    //! Konstruktor klasy okna głównego
+    /*!
+     * \brief Konstruktor klasy okna głównego
+     * \param parent Wskaźnik na klasę nadrzędną okna głównego
+     */
     explicit MainWindow(QWidget *parent = nullptr);
+
+    //! Destruktor klasy okna głównego
+    /*!
+    * \brief Destruktor klasy okna głównego
+    */
     ~MainWindow();
 
 private slots:
-    void on_search_button_clicked();
-
-    void on_dev_list_itemClicked(QListWidgetItem *item);
-
-    void on_connect_button_clicked();
-
-    void read_data();
-
-    void write_data(const QByteArray &data);
-
-    void closeSerialPort();
-
+    //! Slot zlecający wysyłanie komendy z okna konsoli
+    /*!
+    * \brief Slot zlecający wysyłanie komendy z okna konsoli
+    */
     void on_send_button_clicked();
+    //! Slot pokazujący okno konfiguracyjne
+    /*!
+    * \brief Slot pokazujący okno konfiguracyjne
+    */
+    void on_settings_clicked();
 
+protected slots:
+    //! Slot odświeżający elementy graficzne głównego okna
+    /*!
+    * \brief Slot odświeżający elementy graficzne głównego okna
+    * \param data Wskaźnik na strukturę zawierającą przetworzone, gotowe dane do wyświetlenia
+    */
     void refresh_data(drone_data *data);
+    //! Slot wyświetlający podany status
+    /*!
+    * \brief Slot wyświetlający podany status
+    * \param string Status do wyświetlenia
+    */
+    void change_status(QString string);
 
 private:
+    //! Wskaźnik na element user interface
     Ui::MainWindow *ui;
-    QList<QSerialPortInfo> port_list;
-    QString selected_port;
-    QSerialPort *serial;
-    parser *parametry;
-    QVector<double> time;
-    QVector<double> yaw;
-    QVector<double> pitch;
-    QVector<double> roll;
-    QVector<double> height;
-    QVector<double> speed;
-    QVector<double> battery;
+    //! Wskaźnik na element timera, odmierzającego czas od uruchomienia
     QElapsedTimer *timer;
+    //! Minimalna zarejestrowana wartość wysokości
     double min_h=100000;
+    //! Maksymalna zarejestrowana wartość wysokości
     double max_h=-100000;
+    //! Wskaźnik na element odpowiedzialny za komunikację z portem szeregowym
+    Comms *settings=nullptr;
 };
 
 #endif // MAINWINDOW_H

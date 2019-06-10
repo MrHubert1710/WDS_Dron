@@ -13,12 +13,9 @@
 
 #include <glm/glm.hpp>
 
-constexpr float CAMERA_SPEED = 3.0f;
-
-
 void Dialog::setRotation(float yaw, float pitch, float roll){
     m_model=m_model_def;
-    a_yaw=yaw;
+    a_yaw=yaw+90;
     a_pitch=pitch;
     a_roll=roll;
 
@@ -28,7 +25,7 @@ void Dialog::setRotation(float yaw, float pitch, float roll){
     update();
 }
 
-void Dialog::setRotationY(int yaw){
+void Dialog::setRotationY(float yaw){
     a_yaw=yaw+90;
     m_model=m_model_def;
 
@@ -37,7 +34,7 @@ void Dialog::setRotationY(int yaw){
     m_model.rotate(a_roll, 1.0f, 0.0f, 0.0f);
     update();
 }
-void Dialog::setRotationP(int pitch){
+void Dialog::setRotationP(float pitch){
     a_pitch=pitch;
     m_model=m_model_def;
 
@@ -46,7 +43,7 @@ void Dialog::setRotationP(int pitch){
     m_model.rotate(a_roll, 1.0f, 0.0f, 0.0f);
     update();
 }
-void Dialog::setRotationR(int roll){
+void Dialog::setRotationR(float roll){
     a_roll=roll;
     m_model=m_model_def;
 
@@ -54,12 +51,6 @@ void Dialog::setRotationR(int roll){
     m_model.rotate(a_pitch, 0.0f, 0.0f, 1.0f);
     m_model.rotate(a_roll, 1.0f, 0.0f, 0.0f);
     update();
-}
-void Dialog::setZoom(int zoom){
-    if(zoom){
-
-    }
-
 }
 
 Dialog::Dialog(QWidget *parent)
@@ -107,8 +98,9 @@ void Dialog::initializeGL()
 
     m_view.setToIdentity();
     m_view.translate(0, 0, -3);
-
-    glClearColor(1, 1, 1, 0);
+    float gray = 240;
+    gray/=255;
+    glClearColor(gray , gray, gray, 0);
     //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //glColor3f(1,1,1);
 
@@ -178,10 +170,3 @@ void Dialog::paintGL()
 
     m_program.release();
 }
-
-void Dialog::nextFrame()
-{
-
-    update();
-}
-
