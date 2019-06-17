@@ -46,14 +46,14 @@ signals:
     //! Sygnał emitowany gdy klasa posiada gotowe użyteczne dane
     /*!
      * \brief Sygnał emitowany gdy klasa posiada gotowe użyteczne dane
-     * \param present Wskaźnik na strukturę z gotowymi danymi
+     * \param[in,out] present Wskaźnik na strukturę z gotowymi danymi
      */
     void dataChanged(drone_data *present);
 public slots:
     //! Slot odpowiedzialny za przetwarzanie surowych danych
     /*!
      * \brief Slot odpowiedzialny za przetwarzanie surowych danych
-     * \param line Surowe dane do przetworzenia
+     * \param[in] line Surowe dane do przetworzenia
      */
     void parseString(QByteArray line);
 private:

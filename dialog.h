@@ -22,7 +22,7 @@ public:
     //! Konstruktor klasy Dialog
     /*!
      * \brief Konstruktor klasy Dialog
-     * \param parent Wskaźnik do elementu zawierającego element klasy Dialog
+     * \param[in] parent Wskaźnik do elementu zawierającego element klasy Dialog
      */
     Dialog(QWidget *parent);
 
@@ -30,27 +30,27 @@ public slots:
     //! Slot obracający sztuczny horyzont do określonej pozycji
     /*!
      * \brief Slot natychmiastowo obracający sztuczny horyzont do określonej pozycji
-     * \param yaw Parametr yaw (-180 - 180)
-     * \param pitch Parametr pitch (-180 - 180)
-     * \param roll Parametr roll (-180 - 180)
+     * \param[in] yaw Parametr yaw (-180 - 180)
+     * \param[in] pitch Parametr pitch (-180 - 180)
+     * \param[in] roll Parametr roll (-180 - 180)
      */
     void setRotation(float yaw, float pitch, float roll);
     //! Slot obracający sztuczny horyzont do określonej pozycji na osi Yaw
     /*!
      * \brief Slot natychmiastowo obracający sztuczny horyzont do określonej pozycji na osi Yaw
-     * \param yaw Parametr yaw (-180 - 180)
+     * \param[in] yaw Parametr yaw (-180 - 180)
      */
     void setRotationY(float yaw);
     //! Slot obracający sztuczny horyzont do określonej pozycji na osi Pitch
     /*!
      * \brief Slot natychmiastowo obracający sztuczny horyzont do określonej pozycji na osi Pitch
-     * \param pitch Parametr pitch (-180 - 180)
+     * \param[in] pitch Parametr pitch (-180 - 180)
      */
     void setRotationP(float pitch);
     //! Slot obracający sztuczny horyzont do określonej pozycji na osi Roll
     /*!
      * \brief Slot natychmiastowo obracający sztuczny horyzont do określonej pozycji na osi Roll
-     *  \param roll Parametr roll (-180 - 180)
+     *  \param[in] roll Parametr roll (-180 - 180)
      */
     void setRotationR(float roll);
 

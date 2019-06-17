@@ -23,8 +23,8 @@ public:
     //! Konstruktor klasy Comms
     /*!
      * \brief Konstruktor klasy Comms zawierający mechanizmy inicjalizacyjne, potrzebne do prawidłowego działania.
-     * \param parent Wskaźnik na element zawierający element klasy Comms
-     * \param console Wskaźnik na element klasy Console do którego zapisywać będzie dane przychodzące
+     * \param[in] parent Wskaźnik na element zawierający element klasy Comms
+     * \param[in] console Wskaźnik na element klasy Console do którego zapisywać będzie dane przychodzące
      */
     explicit Comms(QWidget *parent = nullptr,Console *console = nullptr);
     //! Destruktor klasy Comms
@@ -33,7 +33,7 @@ signals:
     //! Sygnał wydawany gdy status połączenia się zmienia
     /*!
      * \brief Sygnał wydawany gdy status połączenia się zmienia
-     * \param string Nowy stan
+     * \param[in,out] string Nowy stan
      */
     void status_changed(QString string);
 
@@ -56,7 +56,7 @@ private slots:
     //! Slot wybierający port
     /*!
      * \brief Slot wybierania portu z listy
-     * \param item Wskaźnik na wybrany element
+     * \param[in] item Wskaźnik na wybrany element
      */
     void on_dev_list_itemClicked(QListWidgetItem *item);
     //! Slot odczytujący dane z portu szeregowego
@@ -74,7 +74,7 @@ public slots:
     //! Slot wysyłający dane do portu szeregowego
     /*!
      * \brief Slot wysyłania danych do portu szeregowego
-     * \param data Referencja na dane do wysłania
+     * \param[in] data Referencja na dane do wysłania
      */
     void write_data(const QByteArray &data);
 

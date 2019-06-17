@@ -19,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent) :
     timer->start();
 
     QQuickView *view = new QQuickView();
+
+    view->setResizeMode(QQuickView::SizeRootObjectToView);
+    view->rootContext()->setContextProperty("pathController",&controller);
     QWidget *container = QWidget::createWindowContainer(view, this);
     container->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
     view->setSource(QUrl("qrc:/qml/main.qml"));
@@ -35,11 +38,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->Plot_Height->xAxis->setTickLabels(false);
     ui->Plot_Speed->xAxis->setTickLabels(false);
     ui->Plot_Battery->xAxis->setTickLabels(false);
-
-
-
-
-
 }
 
 MainWindow::~MainWindow()
@@ -107,6 +105,8 @@ void MainWindow::refresh_data(drone_data *data)
         ui->Plot_Height->replot();
         ui->Plot_Speed->replot();
         ui->Plot_Battery->replot();
+        controller.addPoint(data->lat,data->lon);
+
 }
 
 void MainWindow::change_status(QString string)

@@ -15,7 +15,7 @@
 
 void Dialog::setRotation(float yaw, float pitch, float roll){
     m_model=m_model_def;
-    a_yaw=yaw+90;
+    a_yaw=yaw;
     a_pitch=pitch;
     a_roll=roll;
 
@@ -26,7 +26,7 @@ void Dialog::setRotation(float yaw, float pitch, float roll){
 }
 
 void Dialog::setRotationY(float yaw){
-    a_yaw=yaw+90;
+    a_yaw=yaw;
     m_model=m_model_def;
 
     m_model.rotate(a_yaw, 0.0f, 1.0f, 0.0f);
@@ -44,7 +44,7 @@ void Dialog::setRotationP(float pitch){
     update();
 }
 void Dialog::setRotationR(float roll){
-    a_roll=roll;
+    a_roll=-roll;
     m_model=m_model_def;
 
     m_model.rotate(a_yaw, 0.0f, 1.0f, 0.0f);

@@ -31,6 +31,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         parser.cpp \
+        pathcontroller.cpp \
         qcustomplot.cpp \
         texturedsphere.cpp
 
@@ -40,6 +41,7 @@ HEADERS += \
         dialog.h \
         mainwindow.h \
         parser.h \
+        pathcontroller.h \
         qcustomplot.h \
         texturedsphere.h
 

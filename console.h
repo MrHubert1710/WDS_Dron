@@ -20,21 +20,21 @@ public:
     //! Konstruktor klasy Console
     /*!
      *  \brief Kostruktor klasy Console inicializujący funkcjonalność konsoli
-     *  \param parent Wskaźnik na rodzica zawierającego element klasy konsoli
+     *  \param[in] parent Wskaźnik na rodzica zawierającego element klasy konsoli
      */
     Console(QWidget *parent);
     //! Metoda umieszczająca dane na polu konsoli
     /*!
      * \brief Metoda umieszczająca fragmenty danych na widocznym polu konsoli
-     * \param data Dane do umieszczenia
-     * \param sending Kierunek komunikacji (true dla wysyłania, false dla odbierania)
+     * \param[in] data Dane do umieszczenia
+     * \param[in] sending Kierunek komunikacji (true dla wysyłania, false dla odbierania)
      */
     void putData(const QByteArray &data,bool sending);
 signals:
     //! Sygnał emitowany po odczytaniu znaku nowej linii
     /*!
      * \brief Sygnał emitowany po odczytaniu znaku nowej linii, oznaczający gotowość do odczytu linii poleceń
-     * \param dane Linia poleceń do odczytania i interpretacji
+     * \param[in,out] dane Linia poleceń do odczytania i interpretacji
      */
     void line_ready(QByteArray dane);
 };
